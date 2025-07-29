@@ -1,0 +1,9 @@
+local lp = game:GetService("Players").LocalPlayer
+
+local hat = lp.Character:FindFirstChildOfClass("Accessory")
+local handle = hat.Handle
+
+if handle:FindFirstChild("AccessoryWeld") then
+  handle.AccessoryWeld:Destroy()
+end
+handle.Anchored = true
