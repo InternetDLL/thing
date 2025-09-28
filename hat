@@ -16,7 +16,7 @@ local Window = ReGui:TabsWindow({
 	Size = UDim2.fromOffset(300, 200)
 })
 
-local tab1 = Window:CreateTab("Main")
+local tab1 = Window:CreateTab({Name="Main"})
 
 tab1:Label({Text="28/09/2025"})
 tab1:Button({
