@@ -24,7 +24,7 @@ Window:Button({
 })
 
 wait(1)
-ModalWindow = ReGui:PopupModal({
+ModalWindow = Window:PopupModal({
 	Title = "meow?"
 })
 print("window: ".. ModalWindow)
