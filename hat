@@ -1,4 +1,5 @@
 local ReGui = loadstring(game:HttpGet('https://raw.githubusercontent.com/depthso/Dear-ReGui/refs/heads/main/ReGui.lua'))()
+local Players = game:GetService("Players")
 
 local Window = ReGui:Window({
 	Title = "all purpose rabbit🐇",
@@ -7,9 +8,9 @@ local Window = ReGui:Window({
 
 Window:Label({Text="Hello, world!"})
 Window:Button({
-	Text = "Save",
+	Text = "Join Large Server",
 	Callback = function()
-		MySaveFunction()
+		Players:Chat("joinxl")
 	end,
 })
 Window:InputText({Label="string"})
