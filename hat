@@ -13,7 +13,7 @@ end
 local Window = ReGui:Window({
 	Title = "APR | All Purpose Rabbit🐇",
 	Size = UDim2.fromOffset(300, 200)
-}) --> Canvas & WindowClass
+})
 
 Window:Label({Text="28/09/2025"})
 Window:Button({
@@ -25,7 +25,7 @@ Window:Button({
 
 local ModalWindow = ReGui:PopupModal({
 	Title = "Delete?"
-}) --> Canvas
+})
 
 ModalWindow:Label({
 	Text = "All those beautiful files will be deleted.\nThis operation cannot be undone!",
@@ -39,7 +39,7 @@ ModalWindow:Checkbox({
 
 local Row = ModalWindow:Row({
 	Expanded = true
-}) --> Canvas
+})
 Row:Button({
 	Text = "Okay",
 	Callback = function()
