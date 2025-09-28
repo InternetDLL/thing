@@ -67,8 +67,12 @@ tab2:Checkbox({
 				end
 			end)
 		else
-			arkc1:Disconnect()
-			arkc2:Disconnect()
+			if arkc1 then
+				arkc1:Disconnect()
+			end
+			if arkc2 then
+				arkc2:Disconnect()
+			end
 		end
 	end
 })
