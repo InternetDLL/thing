@@ -9,13 +9,6 @@ local function gc()
 	return LocalPlayer.Character or false
 end
 
-local currentpos
-local function setcurrent()
-	if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-		currentpos = LocalPlayer.Character.HumanoidRootPart.CFrame
-	end
-end
-
 local function SendMsg(str,hide)
     if hide then
         TextChatService.TextChannels.RBXSystem:SendAsync(str)
@@ -91,14 +84,15 @@ tab2:Checkbox({
 			charcon = LocalPlayer.CharacterAdded:Connect(function()
 				antiglitch = char.HumanoidRootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
 					if char.HumanoidRootPart.Position == Vector3.new(1234567,1234567,1234567) then
-						char.HumanoidRootPart.CFrame = currentpos
+						char.HumanoidRootPart.CFrame = Vector3.nw(0,20,0)
 					end
 				end)
 			end)
-			while Value and char:FindFirstChild("HumanoidRootPart") do
-				setcurrent()
-				task.wait(1)
-			end
+			antiglitch = char.HumanoidRootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
+				if char.HumanoidRootPart.Position == Vector3.new(1234567,1234567,1234567) then
+					char.HumanoidRootPart.CFrame = Vector3.nw(0,20,0)
+				end
+			end)
 		else
 			if antiglitch then
 				antiglitch:Disconnect()
