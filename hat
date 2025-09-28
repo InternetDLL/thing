@@ -26,7 +26,7 @@ local tab1 = Window:CreateTab({Name="Main"})
 local tab2 = Window:CreateTab({Name="Arkenstone"})
 
 
-tab1:Label({Text="Update 9"})
+tab1:Label({Text="Update 12"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -82,15 +82,15 @@ tab2:Checkbox({
 		local char = gc()
 		if Value and char and char:FindFirstChild("HumanoidRootPart") then
 			charcon = LocalPlayer.CharacterAdded:Connect(function(cc)
-				antiglitch = cc.HumanoidRootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
+				antiglitch = cc:WaitForChild("HumanoidRootPart"):GetPropertyChangedSignal("CFrame"):Connect(function()
 					if cc.HumanoidRootPart.Position == Vector3.new(1234567,1234567,1234567) then
-						cc.HumanoidRootPart.CFrame = Vector3.new(0,20,0)
+						cc.HumanoidRootPart.CFrame = CFrame.new(0,20,0)
 					end
 				end)
 			end)
 			antiglitch = char.HumanoidRootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
 				if char.HumanoidRootPart.Position == Vector3.new(1234567,1234567,1234567) then
-					char.HumanoidRootPart.CFrame = Vector3.new(0,20,0)
+					char.HumanoidRootPart.CFrame = CFrame.new(0,20,0)
 				end
 			end)
 		else
