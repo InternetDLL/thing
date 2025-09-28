@@ -23,32 +23,7 @@ Window:Button({
 	end,
 })
 
---[[ ModalWindow = ReGui:PopupModal({
-	Title = "Delete?"
+wait(1)
+ModalWindow = ReGui:PopupModal({
+	Title = "meow?"
 })
-
-ModalWindow:Label({
-	Text = "All those beautiful files will be deleted.\nThis operation cannot be undone!",
-	TextWrapped = true
-})
-ModalWindow:Separator()
-ModalWindow:Checkbox({
-	Value = false,
-	Label = "Don't ask me next time"
-})
-
-local Row = ModalWindow:Row({
-	Expanded = true
-})
-Row:Button({
-	Text = "Okay",
-	Callback = function()
-		ModalWindow:ClosePopup()
-	end,
-})
-Row:Button({
-	Text = "Cancel",
-	Callback = function()
-		ModalWindow:ClosePopup()
-	end,
-})]]
