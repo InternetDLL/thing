@@ -23,7 +23,7 @@ Window:Button({
 	end,
 })
 
-local ModalWindow = ...:PopupModal({
+local ModalWindow = ReGui:PopupModal({
 	Title = "Delete?"
 }) --> Canvas
 
