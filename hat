@@ -18,7 +18,7 @@ local Window = ReGui:TabsWindow({
 
 local tab1 = Window:CreateTab({Name="Main"})
 
-tab1:Label({Text="v4"})
+tab1:Label({Text="v5"})
 tab1:Label({Text="28/09/2025"})
 tab1:Button({
 	Text = "Join Large Server",
@@ -26,6 +26,13 @@ tab1:Button({
 		ReplicatedStorage.JoinXL:FireServer()
 	end,
 })
+tab1:Button({
+	Text = "Join VC Server",
+	Callback = function()
+		ReplicatedStorage.JoinXL:FireServer()
+	end,
+})
+
 
 --Popup
 local ModalWindow = Window:PopupModal({
