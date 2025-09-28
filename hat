@@ -16,16 +16,17 @@ local Window = ReGui:TabsWindow({
 	Size = UDim2.fromOffset(300, 200)
 })
 
-Window:CreateTab()
+local tab1 = Window:CreateTab("Main")
 
-Window:Label({Text="28/09/2025"})
-Window:Button({
+tab1:Label({Text="28/09/2025"})
+tab1:Button({
 	Text = "Join Large Server",
 	Callback = function()
 		ReplicatedStorage.System:FireServer("og")
 	end,
 })
 
+--Popup
 local ModalWindow = Window:PopupModal({
 	Title = "Credits"
 }) --> Canvas
