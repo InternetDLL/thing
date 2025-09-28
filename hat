@@ -81,24 +81,30 @@ tab2:Checkbox({
 })
 
 local antiglitch
+local charcon
 tab2:Checkbox({
 	Value = false,
 	Label = "Anti glitch",
 	Callback = function(self, Value: boolean)
 		local char = gc()
 		if Value and char and char:FindFirstChild("HumanoidRootPart") then
-			antiglitch = char.HumanoidRootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
-				if char.HumanoidRootPart.Position == Vector3.new(1234567,1234567,1234567) then
-					char.HumanoidRootPart.CFrame = currentpos
-				end
+			charcon = LocalPlayer.CharacterAdded:Connect(function()
+				antiglitch = char.HumanoidRootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
+					if char.HumanoidRootPart.Position == Vector3.new(1234567,1234567,1234567) then
+						char.HumanoidRootPart.CFrame = currentpos
+					end
+				end)
 			end)
 			while Value and char:FindFirstChild("HumanoidRootPart") do
 				setcurrent()
 				task.wait(1)
 			end
 		else
-			if arkc2 then
-				arkc2:Disconnect()
+			if antiglitch then
+				antiglitch:Disconnect()
+			end
+			if charcon then
+				charcon:Disconnect()
 			end
 		end
 	end
