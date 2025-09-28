@@ -2,8 +2,14 @@ local ReGui = loadstring(game:HttpGet('https://raw.githubusercontent.com/depthso
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TextChatService = game:GetService("TextChatService")
 local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Backpack = LocalPlayer.Backpack
 
-function SendMsg(str,hide)
+local function gc()
+	return LocalPlayer.Character
+end
+
+local function SendMsg(str,hide)
     if hide then
         TextChatService.TextChannels.RBXSystem:SendAsync(str)
     else
@@ -17,29 +23,54 @@ local Window = ReGui:TabsWindow({
 })
 
 local tab1 = Window:CreateTab({Name="Main"})
+local tab2 = Window:CreateTab({Name="Arkenstone"})
 
-tab1:Label({Text="update 7"})
-tab1:Label({Text="28/09/2025"})
+
+tab1:Label({Text="Update 8"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
 servs:Button({
-	Text = "XL",
+	Text = " XL ",
 	Callback = function()
 		ReplicatedStorage.System:FireServer("xl")
 	end,
 })
 servs:Button({
-	Text = "VC",
+	Text = " VC ",
 	Callback = function()
 		ReplicatedStorage.JoinXL:FireServer("vc")
 	end,
 })
 servs:Button({
-	Text = "OG",
+	Text = " OG ",
 	Callback = function()
 		ReplicatedStorage.JoinXL:FireServer("og")
 	end,
+})
+
+local arkc1
+local arkc2
+tab2:Checkbox({
+	Value = false,
+	Label = "Auto reset on enlighten",
+	Callback = function(self, Value: boolean)
+		if Value then
+			arkc1 = Backpack.ChildAdded:Connect(function(ins)
+				if ins.Name == "The Arkenstone"
+					SendMsg("reset",true)
+				end
+			end
+			arkc2 = gc().ChildAdded:Connect(function(ins)
+				if ins.Name == "The Arkenstone"
+					SendMsg("reset",true)
+				end
+			end
+		else
+			arkc1:Disconnect()
+			arkc2:Disconnect()
+		end
+	end
 })
 
 --Popup
