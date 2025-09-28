@@ -60,12 +60,12 @@ tab2:Checkbox({
 				if ins.Name == "The Arkenstone"
 					SendMsg("reset",true)
 				end
-			end
+			end)
 			arkc2 = gc().ChildAdded:Connect(function(ins)
 				if ins.Name == "The Arkenstone"
 					SendMsg("reset",true)
 				end
-			end
+			end)
 		else
 			arkc1:Disconnect()
 			arkc2:Disconnect()
