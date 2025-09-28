@@ -81,16 +81,16 @@ tab2:Checkbox({
 	Callback = function(self, Value: boolean)
 		local char = gc()
 		if Value and char and char:FindFirstChild("HumanoidRootPart") then
-			charcon = LocalPlayer.CharacterAdded:Connect(function()
-				antiglitch = char.HumanoidRootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
-					if char.HumanoidRootPart.Position == Vector3.new(1234567,1234567,1234567) then
-						char.HumanoidRootPart.CFrame = Vector3.nw(0,20,0)
+			charcon = LocalPlayer.CharacterAdded:Connect(function(cc)
+				antiglitch = cc.HumanoidRootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
+					if cc.HumanoidRootPart.Position == Vector3.new(1234567,1234567,1234567) then
+						cc.HumanoidRootPart.CFrame = Vector3.new(0,20,0)
 					end
 				end)
 			end)
 			antiglitch = char.HumanoidRootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
 				if char.HumanoidRootPart.Position == Vector3.new(1234567,1234567,1234567) then
-					char.HumanoidRootPart.CFrame = Vector3.nw(0,20,0)
+					char.HumanoidRootPart.CFrame = Vector3.new(0,20,0)
 				end
 			end)
 		else
