@@ -43,6 +43,6 @@ local Row = ModalWindow:Row({
 Row:Button({
 	Text = "Enter",
 	Callback = function()
-		--OwO
+		ModalWindow:ClosePopup()
 	end,
 })
