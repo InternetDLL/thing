@@ -49,27 +49,23 @@ servs:Button({
 	end,
 })
 
-local arkc1
 local arkc2
 tab2:Checkbox({
 	Value = false,
 	Label = "Auto reset on enlighten",
 	Callback = function(self, Value: boolean)
 		if Value then
-			arkc1 = Backpack.ChildAdded:Connect(function(ins)
+			arkc2 = LocalPlayer.CharacterAdded:Connect(function(char)char.ChildAdded:Connect(function(ins)
 				if ins.Name == "The Arkenstone" then
 					SendMsg("reset")
 				end
-			end)
-			arkc2 = gc().ChildAdded:Connect(function(ins)
+			end)end)
+			gc().ChildAdded:Connect(function(ins)
 				if ins.Name == "The Arkenstone" then
 					SendMsg("reset")
 				end
 			end)
 		else
-			if arkc1 then
-				arkc1:Disconnect()
-			end
 			if arkc2 then
 				arkc2:Disconnect()
 			end
