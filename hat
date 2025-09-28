@@ -6,7 +6,14 @@ local LocalPlayer = Players.LocalPlayer
 local Backpack = LocalPlayer.Backpack
 
 local function gc()
-	return LocalPlayer.Character
+	return LocalPlayer.Character or false
+end
+
+local currentpos
+local function setcurrent()
+	if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+		currentpos = LocalPlayer.Character.HumanoidRootPart.CFrame
+	end
 end
 
 local function SendMsg(str,hide)
@@ -26,7 +33,7 @@ local tab1 = Window:CreateTab({Name="Main"})
 local tab2 = Window:CreateTab({Name="Arkenstone"})
 
 
-tab1:Label({Text="Update 8"})
+tab1:Label({Text="Update 9"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -65,6 +72,30 @@ tab2:Checkbox({
 					SendMsg("reset")
 				end
 			end)
+		else
+			if arkc2 then
+				arkc2:Disconnect()
+			end
+		end
+	end
+})
+
+local antiglitch
+tab2:Checkbox({
+	Value = false,
+	Label = "Anti glitch",
+	Callback = function(self, Value: boolean)
+		local char = gc()
+		if Value and char and char:FindFirstChild("HumanoidRootPart") then
+			antiglitch = char.HumanoidRootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
+				if char.HumanoidRootPart.Position == Vector3.new(1234567,1234567,1234567) then
+					char.HumanoidRootPart.CFrame = currentpos
+				end
+			end)
+			while Value and char:FindFirstChild("HumanoidRootPart") do
+				setcurrent()
+				task.wait(1)
+			end
 		else
 			if arkc2 then
 				arkc2:Disconnect()
