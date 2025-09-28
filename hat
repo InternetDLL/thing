@@ -18,23 +18,29 @@ local Window = ReGui:TabsWindow({
 
 local tab1 = Window:CreateTab({Name="Main"})
 
-tab1:Label({Text="update 6"})
+tab1:Label({Text="update 7"})
 tab1:Label({Text="28/09/2025"})
 
 local servs = tab1:Row()
+servs:Label({Text="Join..."})
 servs:Button({
-	Text = "Join XL Server",
+	Text = "XL",
 	Callback = function()
-		ReplicatedStorage.System:FireServer("XL")
+		ReplicatedStorage.System:FireServer("xl")
 	end,
 })
 servs:Button({
-	Text = "Join VC Server",
+	Text = "VC",
 	Callback = function()
-		ReplicatedStorage.JoinXL:FireServer("VC")
+		ReplicatedStorage.JoinXL:FireServer("vc")
 	end,
 })
-
+servs:Button({
+	Text = "VC",
+	Callback = function()
+		ReplicatedStorage.JoinXL:FireServer("og")
+	end,
+})
 
 --Popup
 local ModalWindow = Window:PopupModal({
