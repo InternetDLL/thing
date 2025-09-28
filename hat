@@ -23,7 +23,7 @@ Window:Button({
 	end,
 })
 
-local ModalWindow = ReGui:PopupModal({
+--[[ ModalWindow = ReGui:PopupModal({
 	Title = "Delete?"
 })
 
@@ -51,4 +51,4 @@ Row:Button({
 	Callback = function()
 		ModalWindow:ClosePopup()
 	end,
-})
+})]]
