@@ -23,8 +23,26 @@ Window:Button({
 	end,
 })
 
-wait(1)
-ModalWindow = Window:PopupModal({
-	Title = "meow?"
+local ModalWindow = Window:PopupModal({
+	Title = "Credits"
+}) --> Canvas
+
+ModalWindow:Label({
+	Text = "Script by doingbadlysofar, ReGui library by depthso",
+	TextWrapped = true
 })
-print("window: ".. ModalWindow)
+ModalWindow:Separator()
+ModalWindow:Checkbox({
+	Value = false,
+	Label = "Don't show again"
+})
+
+local Row = ModalWindow:Row({
+	Expanded = true
+}) --> Canvas
+Row:Button({
+	Text = "Enter",
+	Callback = function()
+		--OwO
+	end,
+})
