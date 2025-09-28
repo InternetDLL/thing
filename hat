@@ -1,4 +1,5 @@
 local ReGui = loadstring(game:HttpGet('https://raw.githubusercontent.com/depthso/Dear-ReGui/refs/heads/main/ReGui.lua'))()
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TextChatService = game:GetService("TextChatService")
 local Players = game:GetService("Players")
 
@@ -10,16 +11,18 @@ function SendMsg(str,hide)
     end
 end
 
-local Window = ReGui:Window({
+local Window = ReGui:TabsWindow({
 	Title = "APR | All Purpose Rabbit🐇",
 	Size = UDim2.fromOffset(300, 200)
 })
+
+Window:CreateTab()
 
 Window:Label({Text="28/09/2025"})
 Window:Button({
 	Text = "Join Large Server",
 	Callback = function()
-		SendMsg("joinxl",true)
+		ReplicatedStorage.System:FireServer("og")
 	end,
 })
 
