@@ -11,7 +11,7 @@ function SendMsg(str,hide)
 end
 
 local Window = ReGui:Window({
-	Title = "all purpose rabbit🐇",
+	Title = "APR | All Purpose Rabbit🐇",
 	Size = UDim2.fromOffset(300, 200)
 }) --> Canvas & WindowClass
 
@@ -22,5 +22,33 @@ Window:Button({
 		SendMsg("joinxl",true)
 	end,
 })
-Window:InputText({Label="string"})
-Window:SliderFloat({Label = "float", Minimum = 0.0, Maximum = 1.0})
+
+local ModalWindow = ...:PopupModal({
+	Title = "Delete?"
+}) --> Canvas
+
+ModalWindow:Label({
+	Text = "All those beautiful files will be deleted.\nThis operation cannot be undone!",
+	TextWrapped = true
+})
+ModalWindow:Separator()
+ModalWindow:Checkbox({
+	Value = false,
+	Label = "Don't ask me next time"
+})
+
+local Row = ModalWindow:Row({
+	Expanded = true
+}) --> Canvas
+Row:Button({
+	Text = "Okay",
+	Callback = function()
+		ModalWindow:ClosePopup()
+	end,
+})
+Row:Button({
+	Text = "Cancel",
+	Callback = function()
+		ModalWindow:ClosePopup()
+	end,
+})
