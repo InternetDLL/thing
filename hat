@@ -58,12 +58,12 @@ tab2:Checkbox({
 		if Value then
 			arkc1 = Backpack.ChildAdded:Connect(function(ins)
 				if ins.Name == "The Arkenstone" then
-					SendMsg("reset",true)
+					SendMsg("reset")
 				end
 			end)
 			arkc2 = gc().ChildAdded:Connect(function(ins)
 				if ins.Name == "The Arkenstone" then
-					SendMsg("reset",true)
+					SendMsg("reset")
 				end
 			end)
 		else
