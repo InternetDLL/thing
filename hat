@@ -1,9 +1,16 @@
-local lp = game:GetService("Players").LocalPlayer
+local ReGui = loadstring(game:HttpGet('https://raw.githubusercontent.com/depthso/Dear-ReGui/refs/heads/main/ReGui.lua'))()
 
-local hat = lp.Character:FindFirstChildOfClass("Accessory")
-local handle = hat.Handle
+local Window = ReGui:Window({
+	Title = "all purpose rabbit🐇",
+	Size = UDim2.fromOffset(300, 200)
+}) --> Canvas & WindowClass
 
-if handle:FindFirstChild("AccessoryWeld") then
-  handle.AccessoryWeld:Destroy()
-end
-handle.Anchored = true
+Window:Label({Text="Hello, world!"})
+Window:Button({
+	Text = "Save",
+	Callback = function()
+		MySaveFunction()
+	end,
+})
+Window:InputText({Label="string"})
+Window:SliderFloat({Label = "float", Minimum = 0.0, Maximum = 1.0})
