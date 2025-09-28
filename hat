@@ -18,11 +18,12 @@ local Window = ReGui:TabsWindow({
 
 local tab1 = Window:CreateTab({Name="Main"})
 
+tab1:Label({Text="v4"})
 tab1:Label({Text="28/09/2025"})
 tab1:Button({
 	Text = "Join Large Server",
 	Callback = function()
-		ReplicatedStorage.System:FireServer("og")
+		ReplicatedStorage.JoinXL:FireServer()
 	end,
 })
 
