@@ -18,15 +18,17 @@ local Window = ReGui:TabsWindow({
 
 local tab1 = Window:CreateTab({Name="Main"})
 
-tab1:Label({Text="v5"})
+tab1:Label({Text="update 6"})
 tab1:Label({Text="28/09/2025"})
-tab1:Button({
-	Text = "Join Large Server",
+
+local servs = tab1:Row()
+servs:Button({
+	Text = "Join XL Server",
 	Callback = function()
 		ReplicatedStorage.JoinXL:FireServer()
 	end,
 })
-tab1:Button({
+servs:Button({
 	Text = "Join VC Server",
 	Callback = function()
 		ReplicatedStorage.JoinXL:FireServer()
