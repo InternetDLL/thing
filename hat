@@ -1,16 +1,25 @@
 local ReGui = loadstring(game:HttpGet('https://raw.githubusercontent.com/depthso/Dear-ReGui/refs/heads/main/ReGui.lua'))()
+local TextChatService = game:GetService("TextChatService")
 local Players = game:GetService("Players")
+
+function SendMsg(str,hide)
+    if hide then
+        TextChatService.TextChannels.RBXSystem:SendAsync(str)
+    else
+        TextChatService.TextChannels.RBXGeneral:SendAsync(str)
+    end
+end
 
 local Window = ReGui:Window({
 	Title = "all purpose rabbit🐇",
 	Size = UDim2.fromOffset(300, 200)
 }) --> Canvas & WindowClass
 
-Window:Label({Text="Hello, world!"})
+Window:Label({Text="28/09/2025"})
 Window:Button({
 	Text = "Join Large Server",
 	Callback = function()
-		Players:Chat("joinxl")
+		SendMsg("joinxl",true)
 	end,
 })
 Window:InputText({Label="string"})
