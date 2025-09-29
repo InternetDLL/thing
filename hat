@@ -134,6 +134,30 @@ tab3:Button({
         end
 	end,
 })
+tab3:Checkbox({
+	Value = false,
+	Label = "Disable bkit",
+	Callback = function(self, Value: boolean)
+		if Value then
+			while Value do
+				local h=LocalPlayer.Character.HumanoidRootPart
+        for _,v in pairs(workspace.Bricks:GetDescendants()) do
+            if v.Name == "Brick" then
+                local args = {
+                    v,
+                    h.Position--v.Position+Vector3.new(0,v.Size.Y/2,0)
+                }
+				local tool = findtool("Delete")
+				if tool then
+                tool:WaitForChild("Script"):WaitForChild("Event"):FireServer(unpack(args))
+				end
+                wait(.05)
+            end
+        end
+			wait(1)
+		end	
+	end
+})
 
 --Popup
 if not isfile("APR/HidePopup.txt")  then
