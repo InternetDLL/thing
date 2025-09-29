@@ -6,7 +6,7 @@ local LocalPlayer = Players.LocalPlayer
 local Backpack = LocalPlayer.Backpack
 
 -- Cache
-if not readfile("APR") then writefile("APR") end
+if not isfolder("APR") then makefolder("APR") end
 
 local function gc()
 	return LocalPlayer.Character or false
@@ -126,7 +126,7 @@ servs:Button({
 })
 
 --Popup
-if not readfile("APR/HidePopup") then
+if not isfile("APR/HidePopup.txt")  then
 local ModalWindow = Window:PopupModal({
 	Title = "Credits"
 }) --> Canvas
@@ -152,7 +152,7 @@ Row:Button({
 	Text = "Enter",
 	Callback = function()
 		if dsa then
-			writefile("APR/HidePopup")
+			writefile("APR/HidePopup.txt","")
 		end
 		ModalWindow:ClosePopup()
 	end,
