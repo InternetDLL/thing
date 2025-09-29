@@ -27,7 +27,7 @@ local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 
 
-tab1:Label({Text="Update 13"})
+tab1:Label({Text="Update 14"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -123,6 +123,7 @@ servs:Button({
 })
 
 --Popup
+if not readfile("APR/HidePopup") then
 local ModalWindow = Window:PopupModal({
 	Title = "Credits"
 }) --> Canvas
@@ -132,9 +133,13 @@ ModalWindow:Label({
 	TextWrapped = true
 })
 ModalWindow:Separator()
+local dsa = false
 ModalWindow:Checkbox({
 	Value = false,
-	Label = "Don't show again"
+	Label = "Don't show again",
+	Callback = function(self, Value: boolean)
+		dsa = Value
+	end
 })
 
 local Row = ModalWindow:Row({
@@ -143,6 +148,10 @@ local Row = ModalWindow:Row({
 Row:Button({
 	Text = "Enter",
 	Callback = function()
+		if dsa then
+			writefile("APR/HidePopup")
+		end
 		ModalWindow:ClosePopup()
 	end,
 })
+end
