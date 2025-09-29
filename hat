@@ -40,7 +40,7 @@ local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 
 
-tab1:Label({Text="Update 15"})
+tab1:Label({Text="Update 16"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
