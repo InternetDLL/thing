@@ -39,7 +39,7 @@ local tab1 = Window:CreateTab({Name="Main"})
 local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 
-tab1:Label({Text="Update 17"})
+tab1:Label({Text="Update 20"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -62,6 +62,18 @@ servs:Button({
 	end,
 })
 servs:Label({Text="...Server"})
+tab1:Button({
+	Text = "Load Infinite Yield",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+	end,
+})
+tab1:Button({
+    Text = "Load Remote Spy",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/SimpleSpyV3/main.lua"))()
+    end
+})
 
 local arkc2
 tab2:Checkbox({
@@ -123,6 +135,31 @@ tab2:Checkbox({
 	Label = "Anti void",
 	Callback = function(self, Value: boolean)
 		workspace.FallenPartsDestroyHeight = Value and tonumber("nan") or defheight
+	end
+})
+local blindcon
+tab2:Checkbox({
+	Value = false,
+	Label = "Anti blind",
+	Callback = function(self, Value: boolean)
+        if Value then
+            for _,v in pairs(LocalPlayer.PlayerGui:GetChildren()) do
+		        if v.Name == "Blind" then
+                    v:Destroy()
+                    local x=Lighting:FindFirstChild("Blur")if x then x.Enabled=false end
+                end
+            end
+            blindcon = LocalPlayer.PlayerGui.ChildAdded:Connect(function(v)
+                if v.Name == "Blind" then
+                    v:Destroy()
+                    local x=Lighting:FindFirstChild("Blur")if x then x.Enabled=false end
+                end
+            end)
+        else
+            if blindcon then
+                blindcon:Disconnect()
+            end
+        end
 	end
 })
 
