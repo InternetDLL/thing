@@ -24,9 +24,10 @@ local Window = ReGui:TabsWindow({
 
 local tab1 = Window:CreateTab({Name="Main"})
 local tab2 = Window:CreateTab({Name="Protection"})
+local tab3 = Window:CreateTab({Name="Bkit"})
 
 
-tab1:Label({Text="Update 12"})
+tab1:Label({Text="Update 13"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -102,6 +103,23 @@ tab2:Checkbox({
 			end
 		end
 	end
+})
+
+servs:Button({
+	Text = "Clear map",
+	Callback = function()
+        local h=game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        for _,v in pairs(workspace.Bricks:GetDescendants()) do
+            if v.Name == "Brick" then
+                local args = {
+                    v,
+                    h.Position--v.Position+Vector3.new(0,v.Size.Y/2,0)
+                }
+                Backpack:WaitForChild("Delete"):WaitForChild("Script"):WaitForChild("Event"):FireServer(unpack(args))
+                wait(.05)
+            end
+        end
+	end,
 })
 
 --Popup
