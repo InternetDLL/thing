@@ -233,6 +233,9 @@ tab2:Checkbox({
 	Label = "Teleport to death",
 	Callback = function(self, Value: boolean)
 		if Value then
+            dcon2 = LocalPlayer.Character:WaitForChild("Humanoid").Died:Connect(function()
+                deathcf = hrp.CFrame
+            end)
             dcon1 = LocalPlayer.CharacterAdded:Connect(function(c)
                 local hrp = c:WaitForChild("HumanoidRootPart")
                 if hrp then
