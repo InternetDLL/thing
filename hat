@@ -205,6 +205,12 @@ tab2:Checkbox({
                     c.HumanoidRootPart.CFrame = lastcf
                 end)
             end)
+            local chr = gc()
+            if chr then
+            abcon2 = chr:WaitForChild("HumanoidRootPart"):GetPropertyChangedSignal("CFrame"):Connect(function()
+                chr.HumanoidRootPart.CFrame = lastcf
+            end)
+            end
             while abloop do
                 setcf()
                 task.wait()
