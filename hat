@@ -1,5 +1,4 @@
 --[[ TODO
-Anti bring <--------------------
 Btools copier
 Build loader
 Anti mute
@@ -9,7 +8,6 @@ Crash server/plr
 Command runner + Loop
 Server list
 Join smallest/biggest servers
-Teleport to death
 Toggle flight
 Toggle part noclip
 Anti jail
