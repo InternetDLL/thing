@@ -201,13 +201,20 @@ tab2:Checkbox({
         abloop = Value
 		if abloop then
             abcon1 = LocalPlayer.CharacterAdded:Connect(function(c)
-                abcon2 = c:WaitForChild("HumanoidRootPart"):GetPropertyChangedSignal("CFrame")
+                abcon2 = c:WaitForChild("HumanoidRootPart"):GetPropertyChangedSignal("CFrame"):Connect(function()
                     c.HumanoidRootPart.CFrame = lastcf
                 end)
             end)
             while abloop do
                 setcf()
                 task.wait()
+            end
+        else
+            if abcon1 then
+                abcon1:Disconnect()
+            end
+            if abcon2 then
+                abcon2:Disconnect()
             end
         end
 	end
