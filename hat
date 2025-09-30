@@ -61,7 +61,7 @@ local tab1 = Window:CreateTab({Name="Main"})
 local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 
-tab1:Label({Text="Update 21"})
+tab1:Label({Text="Update 22"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -105,12 +105,12 @@ tab2:Checkbox({
 		if Value then
 			arkc2 = LocalPlayer.CharacterAdded:Connect(function(char)char.ChildAdded:Connect(function(ins)
 				if ins.Name == "The Arkenstone" then
-					SendMsg("reset")
+					SendMsg(";reset")
 				end
 			end)end)
 			gc().ChildAdded:Connect(function(ins)
 				if ins.Name == "The Arkenstone" then
-					SendMsg("reset")
+					SendMsg(";reset")
 				end
 			end)
 		else
@@ -202,12 +202,14 @@ clrlist:Button({
         end
 	end,
 })
+local clrtog = false
 clrlist:Checkbox({
 	Value = false,
 	Label = "Loop",
 	Callback = function(self, Value: boolean)
-		if Value then
-			while Value do
+        clrtog = Value
+		if clrtog then
+			while clrtog do
 				local h=LocalPlayer.Character.HumanoidRootPart
         		for _,v in pairs(workspace.Bricks:GetDescendants()) do
             		if v.Name == "Brick" then
