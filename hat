@@ -1,3 +1,25 @@
+--[[ TODO
+Anti bring
+Btools copier
+Build loader
+Anti mute
+Build blacklist
+Anti low iq
+Crash server/plr
+Command runner + Loop
+Server list
+Join smallest/biggest servers
+Teleport to death
+Toggle flight
+Toggle part noclip
+Anti jail
+Void net
+Teleport to spawn
+Talk using signs
+All signs editable
+Anti freeze
+]]
+
 local ReGui = loadstring(game:HttpGet('https://raw.githubusercontent.com/depthso/Dear-ReGui/refs/heads/main/ReGui.lua'))()
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TextChatService = game:GetService("TextChatService")
@@ -39,7 +61,7 @@ local tab1 = Window:CreateTab({Name="Main"})
 local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 
-tab1:Label({Text="Update 20"})
+tab1:Label({Text="Update 21"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -163,8 +185,8 @@ tab2:Checkbox({
 	end
 })
 
-
-tab3:Button({
+local clrlist = tab3:Row()
+clrlist:Button({
 	Text = "Clear map",
 	Callback = function()
         local h=LocalPlayer.Character.HumanoidRootPart
@@ -180,9 +202,9 @@ tab3:Button({
         end
 	end,
 })
-tab3:Checkbox({
+clrlist:Checkbox({
 	Value = false,
-	Label = "Disable bkit",
+	Label = "Loop",
 	Callback = function(self, Value: boolean)
 		if Value then
 			while Value do
@@ -205,6 +227,7 @@ tab3:Checkbox({
 		end
 	end	
 })
+--[[
 tab3:Button({
 	Text = "Build Saver tool",
 	Callback = function()
@@ -486,6 +509,7 @@ savedbuilds:InputText({
     Label = "Load via JSON",
     Value = ""
 })
+]]
 
 --Popup
 if not isfile("APR/HidePopup.txt")  then
