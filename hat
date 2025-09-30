@@ -61,7 +61,7 @@ local tab1 = Window:CreateTab({Name="Main"})
 local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 
-tab1:Label({Text="Update 23"})
+tab1:Label({Text="Update 24"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -196,7 +196,7 @@ local function setcf()
 end
 tab2:Checkbox({
 	Value = false,
-	Label = "Anti bring",
+	Label = "Anti teleport (Buggy)",
 	Callback = function(self, Value: boolean)
         abloop = Value
 		if abloop then
@@ -220,6 +220,33 @@ tab2:Checkbox({
                 abcon1:Disconnect()
             end
             if abcon2 then
+                abcon2:Disconnect()
+            end
+        end
+	end
+})
+local deathcf
+local dcon1
+local dcon2
+tab2:Checkbox({
+	Value = false,
+	Label = "Teleport to death",
+	Callback = function(self, Value: boolean)
+		if Value then
+            dcon1 = LocalPlayer.CharacterAdded:Connect(function(c)
+                local hrp = c:WaitForChild("HumanoidRootPart")
+                if hrp then
+                hrp.CFrame = deathcf
+                dcon2 = c:WaitForChild("Humanoid").Died:Connect(function()
+                    deathcf = hrp.CFrame
+                end)
+                end
+            end)
+        else
+            if dcon1 then
+                abcon1:Disconnect()
+            end
+            if dcon2 then
                 abcon2:Disconnect()
             end
         end
