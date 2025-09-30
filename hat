@@ -247,10 +247,10 @@ tab2:Checkbox({
             end)
         else
             if dcon1 then
-                abcon1:Disconnect()
+                dcon1:Disconnect()
             end
             if dcon2 then
-                abcon2:Disconnect()
+                dcon2:Disconnect()
             end
         end
 	end
