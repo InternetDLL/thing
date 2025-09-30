@@ -1,5 +1,5 @@
 --[[ TODO
-Anti bring
+Anti bring <--------------------
 Btools copier
 Build loader
 Anti mute
@@ -61,7 +61,7 @@ local tab1 = Window:CreateTab({Name="Main"})
 local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 
-tab1:Label({Text="Update 22"})
+tab1:Label({Text="Update 23"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -121,7 +121,7 @@ tab2:Checkbox({
 	end
 })
 
-local antiglitch
+--[[local antiglitch
 local charcon
 tab2:Checkbox({
 	Value = false,
@@ -150,7 +150,7 @@ tab2:Checkbox({
 			end
 		end
 	end
-})
+})]]
 local defheight = workspace.FallenPartsDestroyHeight
 tab2:Checkbox({
 	Value = false,
@@ -180,6 +180,34 @@ tab2:Checkbox({
         else
             if blindcon then
                 blindcon:Disconnect()
+            end
+        end
+	end
+})
+local lastcf
+local abloop
+local abcon1
+local abcon2
+local function setcf()
+    local c = LocalPlayer.Character
+    if c and c:FindFirstChild("HumanoidRootPart") then
+        lastcf = c.HumanoidRootPart.CFrame
+    end
+end
+tab2:Checkbox({
+	Value = false,
+	Label = "Anti bring",
+	Callback = function(self, Value: boolean)
+        abloop = Value
+		if abloop then
+            abcon1 = LocalPlayer.CharacterAdded:Connect(function(c)
+                abcon2 = c:WaitForChild("HumanoidRootPart"):GetPropertyChangedSignal("CFrame")
+                    c.HumanoidRootPart.CFrame = lastcf
+                end)
+            end)
+            while abloop do
+                setcf()
+                task.wait()
             end
         end
 	end
