@@ -82,6 +82,23 @@ servs:Button({
 	end,
 })
 servs:Label({Text="...Server"})
+local yup = tab1:Row()
+yup:Button({
+	Text = "Refresh list",
+	Callback = function()
+		print("WIP")
+	end,
+})
+tab2:Checkbox({
+	Value = false,
+	Label = "Auto",
+	Callback = function(self, Value: boolean)
+		print("WIP")
+	end
+})
+
+local servers = tab3:CollapsingHeader({Title="Servers"})
+
 tab1:Button({
 	Text = "Load Infinite Yield",
 	Callback = function()
