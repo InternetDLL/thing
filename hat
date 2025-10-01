@@ -59,7 +59,7 @@ local tab1 = Window:CreateTab({Name="Main"})
 local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 
-tab1:Label({Text="Update 25"})
+tab1:Label({Text="Update 26"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -89,7 +89,7 @@ yup:Button({
 		print("WIP")
 	end,
 })
-tab2:Checkbox({
+yup:Checkbox({
 	Value = false,
 	Label = "Auto",
 	Callback = function(self, Value: boolean)
@@ -97,7 +97,7 @@ tab2:Checkbox({
 	end
 })
 
-local servers = tab3:CollapsingHeader({Title="Servers"})
+local servers = tab1:CollapsingHeader({Title="Servers"})
 
 tab1:Button({
 	Text = "Load Infinite Yield",
