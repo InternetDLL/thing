@@ -60,7 +60,7 @@ local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 local tab4 = Window:CreateTab({Name="Offense"})
 
-tab1:Label({Text="Update 27"})
+tab1:Label({Text="Update 28"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -603,7 +603,7 @@ savedbuilds:InputText({
 tab4:InputText({
     Label = "Kill player",
     Value = "",
-	Callback = function(str)
+	Callback = function(self,str)
 ----------------------------------------------------
 local top=Enum.NormalId.Top
 local lhrp = LocalPlayer.Character.HumanoidRootPart
