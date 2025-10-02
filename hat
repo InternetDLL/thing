@@ -607,6 +607,8 @@ tab4:InputText({
 ----------------------------------------------------
 local top=Enum.NormalId.Top
 local lhrp = LocalPlayer.Character.HumanoidRootPart
+task.spawn(function()for _,v in pairs(str) do print(v) end end)
+print(str)
 local victim=game.Players[str]
 local hrp=victim.Character.HumanoidRootPart
 local d="detailed"
