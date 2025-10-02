@@ -50,6 +50,14 @@ local function SendMsg(str,hide)
     end
 end
 
+local function GetPlayer(Input)
+    for _, Player in ipairs(Players:GetPlayers()) do
+        if (string.lower(Input) == string.sub(string.lower(Player.Name), 1, #Input)) or (string.lower(Input) == string.sub(string.lower(Player.DisplayName), 1, #Input)) then
+            return Player;
+        end
+    end
+end
+
 local Window = ReGui:TabsWindow({
 	Title = "APR | All Purpose Rabbit🐇",
 	Size = UDim2.fromOffset(300, 200)
@@ -599,23 +607,28 @@ savedbuilds:InputText({
     Value = ""
 })
 ]]
-
-tab4:InputText({
-    Label = "Kill player",
+local killrow = tab4:Row()
+local vctm
+killrow:InputText({
+    Label = "",
     Value = "",
 	Callback = function(self,str)
+		vctm = str
+	end
+})
+killrow:Button({
+	Text = "Kill player",
+	Callback = function()
 ----------------------------------------------------
 local top=Enum.NormalId.Top
 local lhrp = LocalPlayer.Character.HumanoidRootPart
-task.spawn(function()for _,v in pairs(str) do print(v) end end)
-print(str)
-local victim=game.Players[str]
+local victim=GetPlayer(vctm)
 local hrp=victim.Character.HumanoidRootPart
 local d="detailed"
 local bricks=workspace.Bricks
 local myb=bricks[LocalPlayer.Name]
 local bp=victim.Backpack
-local c=.15
+local c=.5
 
 findtool("Build").Script.Event:FireServer(workspace.Terrain,Enum.NormalId.Top,hrp.Position+Vector3.new(0,-4,0),d)
 wait(c)
@@ -625,7 +638,7 @@ findtool("Shape").Script.Event:FireServer(myb.Brick,top,lhrp.Position,"increase"
 wait(c)
 findtool("Delete").Script.Event:FireServer(myb.Brick,lhrp.Position)
 ----------------------------------------------------
-	end
+	end,
 })
 
 --Popup
