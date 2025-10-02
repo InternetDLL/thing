@@ -60,7 +60,7 @@ local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 local tab4 = Window:CreateTab({Name="Offense"})
 
-tab1:Label({Text="Update 28"})
+tab1:Label({Text="Update 29"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -613,11 +613,11 @@ local victim=game.Players[str]
 local hrp=victim.Character.HumanoidRootPart
 local d="detailed"
 local bricks=workspace.Bricks
-local myb=bricks[lp.Name]
+local myb=bricks[LocalPlayer.Name]
 local bp=victim.Backpack
 local c=.15
 
-findtool("Build").Script.Event:FireServer(workspace.Terrain,Enum.NormalId.Top,lhrp.Position+Vector3.new(0,-4,0),d)
+findtool("Build").Script.Event:FireServer(workspace.Terrain,Enum.NormalId.Top,hrp.Position+Vector3.new(0,-4,0),d)
 wait(c)
 findtool("Paint").Script.Event:FireServer(myb.Brick,top,lhrp.Position,"material",Color3.new(1,1,1),"toxic","")
 wait(c)
