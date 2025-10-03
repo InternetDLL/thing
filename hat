@@ -25,6 +25,15 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Backpack = LocalPlayer.Backpack
 
+ReGui:DefineTheme("Pink Theme", {
+	Text = Color3.fromRGB(200, 180, 200),
+	WindowBg = Color3.fromRGB(35, 30, 35),
+	TitleBarBg = Color3.fromRGB(35, 30, 35),
+	TitleBarBgActive = Color3.fromRGB(50, 45, 50),
+	Border = Color3.fromRGB(50, 45, 50),
+	ResizeGrab = Color3.fromRGB(50, 45, 50),
+})
+
 -- Cache
 if not isfolder("APR") then makefolder("APR") end
 
@@ -60,7 +69,8 @@ end
 
 local Window = ReGui:TabsWindow({
 	Title = "APR | All Purpose Rabbit🐇",
-	Size = UDim2.fromOffset(300, 200)
+	Size = UDim2.fromOffset(300, 200),
+	Theme = "Pink Theme"
 })
 
 local tab1 = Window:CreateTab({Name="Main"})
@@ -68,7 +78,7 @@ local tab2 = Window:CreateTab({Name="Protection"})
 local tab3 = Window:CreateTab({Name="Bkit"})
 local tab4 = Window:CreateTab({Name="Offense"})
 
-tab1:Label({Text="Update 29"})
+tab1:Label({Text="Update 30"})
 
 local servs = tab1:Row()
 servs:Label({Text="Join..."})
@@ -607,6 +617,12 @@ savedbuilds:InputText({
     Value = ""
 })
 ]]
+tab4:Button({
+	Text = "Vulnerability detector",
+	Callback = function()
+		print("WIP")
+	end,
+})
 local killrow = tab4:Row()
 local vctm
 killrow:InputText({
